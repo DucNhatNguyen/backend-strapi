@@ -444,7 +444,7 @@ export interface ApiBookingBooking extends Struct.CollectionTypeSchema {
   collectionName: 'bookings';
   info: {
     description: '\u0110\u01A1n \u0111\u1EB7t d\u1ECBch v\u1EE5 c\u01B0\u1EDBi c\u1EE7a kh\u00E1ch h\u00E0ng (collection ch\u00EDnh)';
-    displayName: '\u0110\u01A1n \u0110\u1EB7t D\u1ECBch V\u1EE5';
+    displayName: '\u0110\u01A1n \u0110\u1EB7t D\u1ECBch V\u1EE5 hhhhh';
     pluralName: 'bookings';
     singularName: 'booking';
   };
