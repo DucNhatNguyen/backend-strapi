@@ -1,0 +1,72 @@
+{
+  "kind": "collectionType",
+  "collectionName": "customers",
+  "info": {
+    "singularName": "customer",
+    "pluralName": "customers",
+    "displayName": "Khách Hàng",
+    "description": "Thông tin khách hàng đặt dịch vụ cưới"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "brideName": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "groomName": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "phone": {
+      "type": "string",
+      "required": true,
+      "maxLength": 15,
+      "unique": true
+    },
+    "phoneAlt": {
+      "type": "string",
+      "maxLength": 15
+    },
+    "email": {
+      "type": "email"
+    },
+    "province": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "district": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "addressDetail": {
+      "type": "text",
+      "maxLength": 300
+    },
+    "source": {
+      "type": "enumeration",
+      "enum": ["facebook", "zalo", "referral", "website", "other"],
+      "default": "other"
+    },
+    "adminNote": {
+      "type": "text",
+      "maxLength": 1000
+    },
+    "bookings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::booking.booking",
+      "mappedBy": "customer"
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "customer"
+    }
+  }
+}

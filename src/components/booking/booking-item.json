@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_booking_items",
+  "info": {
+    "displayName": "Booking Item",
+    "description": "Một dịch vụ trong đơn đặt hàng"
+  },
+  "options": {},
+  "attributes": {
+    "service": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::service.service"
+    },
+    "servicePackage": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::service-package.service-package"
+    },
+    "quantity": {
+      "type": "integer",
+      "required": true,
+      "min": 1,
+      "default": 1
+    },
+    "unitPrice": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    },
+    "subtotal": {
+      "type": "decimal",
+      "min": 0
+    },
+    "note": {
+      "type": "text",
+      "maxLength": 500
+    }
+  }
+}

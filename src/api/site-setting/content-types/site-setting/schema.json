@@ -1,0 +1,80 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_settings",
+  "info": {
+    "singularName": "site-setting",
+    "pluralName": "site-settings",
+    "displayName": "Cài Đặt Trang",
+    "description": "Thông tin cửa hàng, liên hệ, ngân hàng, chính sách đặt cọc"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "studioName": {
+      "type": "string",
+      "required": true,
+      "maxLength": 200
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "phone": {
+      "type": "string",
+      "maxLength": 15
+    },
+    "zalo": {
+      "type": "string",
+      "maxLength": 15
+    },
+    "facebook": {
+      "type": "string",
+      "maxLength": 300
+    },
+    "instagram": {
+      "type": "string",
+      "maxLength": 300
+    },
+    "address": {
+      "type": "text",
+      "maxLength": 300
+    },
+    "workingHours": {
+      "type": "string",
+      "maxLength": 200
+    },
+    "bankName": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "bankAccount": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "bankAccountHolder": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "depositPolicy": {
+      "type": "text",
+      "maxLength": 1000
+    },
+    "depositPercent": {
+      "type": "decimal",
+      "min": 0,
+      "max": 100,
+      "default": 30
+    },
+    "seoTitle": {
+      "type": "string",
+      "maxLength": 70
+    },
+    "seoDescription": {
+      "type": "text",
+      "maxLength": 160
+    }
+  }
+}

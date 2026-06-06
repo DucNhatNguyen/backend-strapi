@@ -1,0 +1,110 @@
+{
+  "kind": "collectionType",
+  "collectionName": "services",
+  "info": {
+    "singularName": "service",
+    "pluralName": "services",
+    "displayName": "Dịch Vụ",
+    "description": "Các dịch vụ cưới: trang trí gia tiên, cổng cưới, makeup, vest, váy cưới, mâm quả"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "maxLength": 200
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "shortDescription": {
+      "type": "text",
+      "maxLength": 300
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "gallery": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "originalPrice": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    },
+    "salePrice": {
+      "type": "decimal",
+      "min": 0
+    },
+    "unit": {
+      "type": "enumeration",
+      "enum": ["bo", "nguoi", "cai", "mam", "set", "buoi"],
+      "default": "bo",
+      "enumName": {
+        "bo": "Bộ",
+        "nguoi": "Người",
+        "cai": "Cái",
+        "mam": "Mâm",
+        "set": "Set",
+        "buoi": "Buổi"
+      }
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["available", "unavailable", "coming_soon"],
+      "default": "available",
+      "required": true
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "default": false
+    },
+    "tags": {
+      "type": "json"
+    },
+    "sortOrder": {
+      "type": "integer",
+      "default": 0
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::service-category.service-category",
+      "inversedBy": "services"
+    },
+    "packages": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::service-package.service-package",
+      "mappedBy": "services"
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "service"
+    },
+    "seoTitle": {
+      "type": "string",
+      "maxLength": 70
+    },
+    "seoDescription": {
+      "type": "text",
+      "maxLength": 160
+    }
+  }
+}

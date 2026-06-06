@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "service_categories",
+  "info": {
+    "singularName": "service-category",
+    "pluralName": "service-categories",
+    "displayName": "Danh Mục Dịch Vụ",
+    "description": "Phân loại dịch vụ cưới: gia tiên, cổng cưới, makeup, trang phục, mâm quả..."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100,
+      "pluginOptions": {}
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 500
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "sortOrder": {
+      "type": "integer",
+      "default": 0,
+      "min": 0
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    },
+    "services": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service.service",
+      "mappedBy": "category"
+    }
+  }
+}

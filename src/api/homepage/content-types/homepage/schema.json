@@ -1,0 +1,48 @@
+{
+  "kind": "singleType",
+  "collectionName": "homepages",
+  "info": {
+    "singularName": "homepage",
+    "pluralName": "homepages",
+    "displayName": "Trang Chủ",
+    "description": "Nội dung trang chủ: banner, giới thiệu, dịch vụ nổi bật"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "bannerSlides": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.banner-slide"
+    },
+    "introTitle": {
+      "type": "string",
+      "maxLength": 200
+    },
+    "introContent": {
+      "type": "richtext"
+    },
+    "introImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "featuredServices": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service.service"
+    },
+    "featuredPackages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service-package.service-package"
+    },
+    "featuredReviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review"
+    }
+  }
+}

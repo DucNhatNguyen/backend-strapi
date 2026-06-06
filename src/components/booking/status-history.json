@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_booking_status_histories",
+  "info": {
+    "displayName": "Lịch Sử Trạng Thái",
+    "description": "Ghi lại lịch sử thay đổi trạng thái đơn"
+  },
+  "options": {},
+  "attributes": {
+    "status": {
+      "type": "enumeration",
+      "enum": ["pending", "confirmed", "deposit_paid", "in_progress", "completed", "cancelled"],
+      "required": true
+    },
+    "changedAt": {
+      "type": "datetime",
+      "required": true
+    },
+    "changedBy": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "note": {
+      "type": "text",
+      "maxLength": 500
+    }
+  }
+}

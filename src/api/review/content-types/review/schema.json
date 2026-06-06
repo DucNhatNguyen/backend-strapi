@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reviews",
+  "info": {
+    "singularName": "review",
+    "pluralName": "reviews",
+    "displayName": "Đánh Giá",
+    "description": "Đánh giá từ khách hàng sau khi sử dụng dịch vụ cưới"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "rating": {
+      "type": "integer",
+      "required": true,
+      "min": 1,
+      "max": 5
+    },
+    "content": {
+      "type": "text",
+      "required": true,
+      "maxLength": 2000
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["pending", "approved", "hidden"],
+      "default": "pending",
+      "required": true
+    },
+    "reviewDate": {
+      "type": "date"
+    },
+    "customer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::customer.customer",
+      "inversedBy": "reviews"
+    },
+    "booking": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::booking.booking",
+      "inversedBy": "reviews"
+    },
+    "service": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::service.service",
+      "inversedBy": "reviews"
+    }
+  }
+}

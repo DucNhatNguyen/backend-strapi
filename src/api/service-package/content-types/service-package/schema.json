@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "service_packages",
+  "info": {
+    "singularName": "service-package",
+    "pluralName": "service-packages",
+    "displayName": "Gói Dịch Vụ",
+    "description": "Gói combo nhiều dịch vụ cưới với giá ưu đãi: Gói Vu Quy Trọn Vẹn, Gói Tiệc Cưới VIP..."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "maxLength": 200
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "packagePrice": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    },
+    "originalTotalPrice": {
+      "type": "decimal",
+      "min": 0
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "default": false
+    },
+    "sortOrder": {
+      "type": "integer",
+      "default": 0
+    },
+    "services": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::service.service",
+      "inversedBy": "packages"
+    }
+  }
+}

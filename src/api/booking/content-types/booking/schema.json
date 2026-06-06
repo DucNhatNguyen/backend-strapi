@@ -1,0 +1,107 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bookings",
+  "info": {
+    "singularName": "booking",
+    "pluralName": "bookings",
+    "displayName": "Đơn Đặt Dịch Vụ",
+    "description": "Đơn đặt dịch vụ cưới của khách hàng (collection chính)"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "bookingCode": {
+      "type": "string",
+      "unique": true,
+      "maxLength": 30
+    },
+    "weddingDate": {
+      "type": "date",
+      "required": true
+    },
+    "vuQuyDate": {
+      "type": "date"
+    },
+    "groomAddress": {
+      "type": "text",
+      "maxLength": 300
+    },
+    "brideAddress": {
+      "type": "text",
+      "maxLength": 300
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "booking.booking-item"
+    },
+    "subtotal": {
+      "type": "decimal",
+      "min": 0,
+      "default": 0
+    },
+    "discountAmount": {
+      "type": "decimal",
+      "min": 0,
+      "default": 0
+    },
+    "discountPercent": {
+      "type": "decimal",
+      "min": 0,
+      "max": 100,
+      "default": 0
+    },
+    "totalAmount": {
+      "type": "decimal",
+      "min": 0,
+      "default": 0
+    },
+    "depositAmount": {
+      "type": "decimal",
+      "min": 0,
+      "default": 0
+    },
+    "depositDate": {
+      "type": "date"
+    },
+    "remainingAmount": {
+      "type": "decimal",
+      "min": 0,
+      "default": 0
+    },
+    "paymentMethod": {
+      "type": "enumeration",
+      "enum": ["cash", "bank_transfer", "momo", "zalo_pay"],
+      "default": "cash"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["pending", "confirmed", "deposit_paid", "in_progress", "completed", "cancelled"],
+      "default": "pending",
+      "required": true
+    },
+    "statusHistory": {
+      "type": "component",
+      "repeatable": true,
+      "component": "booking.status-history"
+    },
+    "adminNote": {
+      "type": "text",
+      "maxLength": 2000
+    },
+    "customer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::customer.customer",
+      "inversedBy": "bookings"
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "booking"
+    }
+  }
+}
