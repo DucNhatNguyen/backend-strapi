@@ -29,7 +29,7 @@
       "required": false,
       "allowedTypes": ["images"]
     },
-    "status": {
+    "reviewStatus": {
       "type": "enumeration",
       "enum": ["pending", "approved", "hidden"],
       "default": "pending",

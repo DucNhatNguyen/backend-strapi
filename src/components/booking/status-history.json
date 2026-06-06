@@ -6,7 +6,7 @@
   },
   "options": {},
   "attributes": {
-    "status": {
+    "toStatus": {
       "type": "enumeration",
       "enum": ["pending", "confirmed", "deposit_paid", "in_progress", "completed", "cancelled"],
       "required": true

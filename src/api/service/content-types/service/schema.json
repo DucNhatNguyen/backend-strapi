@@ -63,7 +63,7 @@
         "buoi": "Buổi"
       }
     },
-    "status": {
+    "serviceStatus": {
       "type": "enumeration",
       "enum": ["available", "unavailable", "coming_soon"],
       "default": "available",

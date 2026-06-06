@@ -461,6 +461,18 @@ export interface ApiBookingBooking extends Struct.CollectionTypeSchema {
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 30;
       }>;
+    bookingStatus: Schema.Attribute.Enumeration<
+      [
+        'pending',
+        'confirmed',
+        'deposit_paid',
+        'in_progress',
+        'completed',
+        'cancelled',
+      ]
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'pending'>;
     brideAddress: Schema.Attribute.Text &
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 300;
@@ -520,18 +532,6 @@ export interface ApiBookingBooking extends Struct.CollectionTypeSchema {
       > &
       Schema.Attribute.DefaultTo<0>;
     reviews: Schema.Attribute.Relation<'oneToMany', 'api::review.review'>;
-    status: Schema.Attribute.Enumeration<
-      [
-        'pending',
-        'confirmed',
-        'deposit_paid',
-        'in_progress',
-        'completed',
-        'cancelled',
-      ]
-    > &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'pending'>;
     statusHistory: Schema.Attribute.Component<'booking.status-history', true>;
     subtotal: Schema.Attribute.Decimal &
       Schema.Attribute.SetMinMax<
@@ -715,10 +715,12 @@ export interface ApiReviewReview extends Struct.CollectionTypeSchema {
         number
       >;
     reviewDate: Schema.Attribute.Date;
-    service: Schema.Attribute.Relation<'manyToOne', 'api::service.service'>;
-    status: Schema.Attribute.Enumeration<['pending', 'approved', 'hidden']> &
+    reviewStatus: Schema.Attribute.Enumeration<
+      ['pending', 'approved', 'hidden']
+    > &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'pending'>;
+    service: Schema.Attribute.Relation<'manyToOne', 'api::service.service'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -893,17 +895,17 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 70;
       }>;
+    serviceStatus: Schema.Attribute.Enumeration<
+      ['available', 'unavailable', 'coming_soon']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'available'>;
     shortDescription: Schema.Attribute.Text &
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 300;
       }>;
     slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
     sortOrder: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
-    status: Schema.Attribute.Enumeration<
-      ['available', 'unavailable', 'coming_soon']
-    > &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'available'>;
     tags: Schema.Attribute.JSON;
     thumbnail: Schema.Attribute.Media<'images'>;
     unit: Schema.Attribute.Enumeration<

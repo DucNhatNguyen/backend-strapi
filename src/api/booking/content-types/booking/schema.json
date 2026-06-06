@@ -76,7 +76,7 @@
       "enum": ["cash", "bank_transfer", "momo", "zalo_pay"],
       "default": "cash"
     },
-    "status": {
+    "bookingStatus": {
       "type": "enumeration",
       "enum": ["pending", "confirmed", "deposit_paid", "in_progress", "completed", "cancelled"],
       "default": "pending",

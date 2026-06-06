@@ -49,7 +49,7 @@ export default {
     // 3. Ghi lịch sử trạng thái đầu tiên
     data.statusHistory = [
       {
-        status: data.status || "pending",
+        toStatus: data.bookingStatus || "pending",
         changedAt: new Date().toISOString(),
         changedBy: "system",
         note: "Đơn được tạo",
@@ -75,20 +75,20 @@ export default {
       data.remainingAmount = Math.max(0, data.totalAmount - (data.depositAmount || 0));
     }
 
-    // Ghi lịch sử nếu status thay đổi
-    if (data.status) {
+    // Ghi lịch sử nếu bookingStatus thay đổi
+    if (data.bookingStatus) {
       const existing = await strapi.entityService.findOne(
         "api::booking.booking",
         where.id,
         { populate: ["statusHistory"] }
       );
 
-      if (existing && existing.status !== data.status) {
+      if (existing && (existing as any).bookingStatus !== data.bookingStatus) {
         const currentHistory = (existing as any).statusHistory || [];
         data.statusHistory = [
           ...currentHistory,
           {
-            status: data.status,
+            toStatus: data.bookingStatus,
             changedAt: new Date().toISOString(),
             changedBy: data._updatedBy || "admin",
             note: data._statusNote || "",

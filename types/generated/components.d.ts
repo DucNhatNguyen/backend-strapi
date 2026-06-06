@@ -59,7 +59,7 @@ export interface BookingStatusHistory extends Struct.ComponentSchema {
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 500;
       }>;
-    status: Schema.Attribute.Enumeration<
+    toStatus: Schema.Attribute.Enumeration<
       [
         'pending',
         'confirmed',
